@@ -15,9 +15,13 @@ const Card = ({
     <CardContainer>
       <ProductImage src={imageUrl} />
       <>
-        <Adder onClick={() => removeItem(id)}>-</Adder>
-        <AmountText>{noOfShirtsAddedToCard}</AmountText>
-        <Adder onClick={() => addItem(id)}>+</Adder>
+        <Adder id="remove-button" onClick={() => removeItem(id)}>
+          -
+        </Adder>
+        <AmountText id="no-of-shirts">{noOfShirtsAddedToCard}</AmountText>
+        <Adder id="add-button" onClick={() => addItem(id)}>
+          +
+        </Adder>
       </>
     </CardContainer>
   );
