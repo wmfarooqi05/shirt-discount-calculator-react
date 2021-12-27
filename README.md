@@ -1,8 +1,59 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). Language used is Typescript.
 
-## Available Scripts
+Below you will find some information on how to perform common tasks.<br>
+
+## Table of Contents
+
+- [Getting Started](#getting-started)
+- [Installing](#installing)
+- [Run with NPM](#run-with-npm)
+- [Run With Docker](#run-with-docker)
+- [Available Scripts (NPM)](#available-scripts)
+  - [npm start](#npm-start)
+  - [npm test](#npm-test)
+  - [npm run test:tsc](#npm-run-test:tsc)
+  - [npm run test:lint](#npm-run-test:lint)
+  - [npm run build](#npm-run-build)
+  - [npm run eject](#npm-run-eject)
+- [Built with](#built-with)
+
+## Getting Started
+
+![Screen Shopt](images/screenshot.png?raw=true "Screen Shot")
+![Screen Shopt](images/screen-recording.gif?raw=true "Screen Shot")
+## Installing
+```
+git clone https://github.com/waleedmehmood-10p/shirt-discount-calculator.git
+cd shirt-discount-calculator
+```
+## Run with NPM
+
+### Prerequisites
+Make sure you have already installed Node engine.
+```
+node -v
+```
+### Running the project
+Run the following commands for testing and running up
+```
+npm run test
+npm start
+```
+Go to http://localhost:3000
+
+## Run With Docker
+
+### Prerequisites
+Make sure you have already installed Docker Engine. You don’t need to install NPM. It will run tests and build a containerized application.
+
+### Running the project
+```
+docker-compose build .
+docker-compose up -d
+```
+## Available Scripts (NPM)
 
 In the project directory, you can run:
 
@@ -18,6 +69,14 @@ You will also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm test:tsc`
+
+Launches the Typesciprt compilation and test the code for typescript errors.\
+
+### `npm test:tsc`
+
+Launches the test for linting errors.\
 
 ### `npm run build`
 
@@ -39,8 +98,8 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Built With 
+* [React.js](https://reactjs.org/) - The front-end framework used
+* [Docker](https://www.docker.com/) - Containerization
+* [Styled-Components](https://styled-components.com/) - Front-end Styling

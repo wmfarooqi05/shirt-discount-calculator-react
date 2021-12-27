@@ -5,6 +5,9 @@ import { theme } from "../../constant/theme/theme";
 export const Container = styled.div`
   width: 90%;
   margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const Header = styled.h1`

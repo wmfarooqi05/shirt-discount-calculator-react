@@ -15,9 +15,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test:lint": "npx eslint '*/**/*.{ts,tsx}'",
+    "test:tsc": "npx tsc --noemit",
+    "test:jest": "npx jest",
+    "test": "npm run test:lint && npm run test:tsc && npm run test:jest"
   },
   "eslintConfig": {
     "extends": [

@@ -176,4 +176,28 @@ describe("Home container", () => {
     expect(setState).toHaveBeenCalledTimes(1);
     expect(setState).toHaveBeenCalledWith(0);
   });
+
+  it("Should work in case of non zero number of shirts", async () => {
+    const updatedState = produce(mockShirtList, (draftState: any) => {
+      draftState[0].noOfShirtsAddedToCard = -1;
+      draftState[1].noOfShirtsAddedToCard = -1;
+      draftState[2].noOfShirtsAddedToCard = -1;
+      draftState[3].noOfShirtsAddedToCard = -1;
+      draftState[4].noOfShirtsAddedToCard = -1;
+    });
+
+    const setState = jest.fn();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const useStateMock: any = (initState: any) => [initState, setState];
+    jest.spyOn(React, "useState").mockImplementation(useStateMock);
+
+    const wrapper = mount(<Home mockShirtList={updatedState} />);
+    await act(async () => {
+      wrapper.find("#calculate-price").first().simulate("click");
+    });
+    wrapper.update();
+
+    expect(setState).toHaveBeenCalledTimes(1);
+    expect(setState).toHaveBeenCalledWith(0);
+  });
 });
