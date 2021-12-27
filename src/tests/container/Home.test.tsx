@@ -27,7 +27,7 @@ describe("Home container", () => {
     );
   });
 
-  it("Should update the shirt count in state", async () => {
+  it("Should add the shirt count in state", async () => {
     const setState = jest.fn();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const useStateMock: any = (initState: any) => [initState, setState];
@@ -50,6 +50,53 @@ describe("Home container", () => {
     });
     expect(setState).toHaveBeenCalledTimes(1);
     expect(setState).toHaveBeenCalledWith(updatedState);
+  });
+
+  it("Should not decrease the shirt count less than 0", async () => {
+    const setState = jest.fn();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const useStateMock: any = (initState: any) => [initState, setState];
+    jest.spyOn(React, "useState").mockImplementation(useStateMock);
+
+    const wrapper = mount(<Home mockShirtList={...mockShirtList} />);
+    await act(async () => {
+      wrapper
+        .find("#shirt-list-container")
+        .children()
+        .at(1)
+        .find("#remove-button")
+        .first()
+        .simulate("click");
+    });
+    wrapper.update();
+    expect(setState).toHaveBeenCalledTimes(0);
+  });
+
+  it("Should decrease the shirt count in state", async () => {
+    const setState = jest.fn();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const useStateMock: any = (initState: any) => [initState, setState];
+    jest.spyOn(React, "useState").mockImplementation(useStateMock);
+
+    const updatedState = produce(mockShirtList, (draftState: any) => {
+      draftState[0].noOfShirtsAddedToCard = 1;
+    });
+
+    const wrapper = mount(<Home mockShirtList={...updatedState} />);
+    await act(async () => {
+      wrapper
+        .find("#shirt-list-container")
+        .children()
+        .at(1)
+        .find("#remove-button")
+        .first()
+        .simulate("click");
+    });
+    wrapper.update();
+
+    expect(setState).toHaveBeenCalledTimes(1);
+    expect(setState).toHaveBeenCalledWith(mockShirtList);
+    expect(setState).toHaveBeenCalledWith(mockShirtList);
   });
 
   it("Should calculate the final price", async () => {
@@ -112,5 +159,21 @@ describe("Home container", () => {
 
     expect(setState).toHaveBeenCalledTimes(1);
     expect(setState).toHaveBeenCalledWith(BASE_PRICE);
+  });
+
+  it("Home must render correctly in case of empty mock list", async () => {
+    const setState = jest.fn();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const useStateMock: any = (initState: any) => [initState, setState];
+    jest.spyOn(React, "useState").mockImplementation(useStateMock);
+
+    const wrapper = mount(<Home mockShirtList={[]} />);
+    await act(async () => {
+      wrapper.find("#calculate-price").first().simulate("click");
+    });
+    wrapper.update();
+
+    expect(setState).toHaveBeenCalledTimes(1);
+    expect(setState).toHaveBeenCalledWith(0);
   });
 });

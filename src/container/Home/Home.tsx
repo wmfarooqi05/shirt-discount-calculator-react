@@ -56,8 +56,8 @@ const Home = ({ mockShirtList }: { mockShirtList: SHIRT_ITEM_TYPE[] }) => {
     shirtsAddedToCart: number[],
     maxGroupSizeAllowed: number
   ): number => {
-    if (maxGroupSizeAllowed === 0) return 0;
     if (shirtsAddedToCart.length === 0) return 0;
+    if (maxGroupSizeAllowed === 0) return 0;
     if (shirtsAddedToCart.filter((x) => x > 0).length === 0) return 0;
 
     shirtsAddedToCart.sort((a, b) => b - a);
