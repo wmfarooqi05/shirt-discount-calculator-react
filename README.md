@@ -50,7 +50,7 @@ Make sure you have already installed Docker Engine. You don’t need to install 
 
 ### Running the project
 ```
-docker-compose build .
+docker-compose build
 docker-compose up -d
 ```
 ## Available Scripts (NPM)
