@@ -18,7 +18,7 @@
     "eject": "react-scripts eject",
     "test:lint": "npx eslint '*/**/*.{ts,tsx}'",
     "test:tsc": "npx tsc --noemit",
-    "test:jest": "npx jest",
+    "test:jest": "jest",
     "test": "npm run test:lint && npm run test:tsc && npm run test:jest"
   },
   "eslintConfig": {
