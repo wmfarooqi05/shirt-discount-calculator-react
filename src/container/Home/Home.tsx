@@ -56,6 +56,7 @@ const Home = ({ mockShirtList }: { mockShirtList: SHIRT_ITEM_TYPE[] }) => {
     shirtsAddedToCart: number[],
     maxGroupSizeAllowed: number
   ): number => {
+    if (maxGroupSizeAllowed === 0) return 0;
     if (shirtsAddedToCart.length === 0) return 0;
     if (shirtsAddedToCart.filter((x) => x > 0).length === 0) return 0;
 
@@ -82,13 +83,20 @@ const Home = ({ mockShirtList }: { mockShirtList: SHIRT_ITEM_TYPE[] }) => {
     );
 
     const maxGroupSizeAllowed = getMaxGroupAvailable(shirtsAddedToCart);
-
-    setFinalPrice(
-      Math.min(
-        getDiscountedPrice([...shirtsAddedToCart], maxGroupSizeAllowed),
-        getDiscountedPrice([...shirtsAddedToCart], maxGroupSizeAllowed - 1)
-      )
+    const price1 = getDiscountedPrice(
+      [...shirtsAddedToCart],
+      maxGroupSizeAllowed
     );
+    const price2 = getDiscountedPrice(
+      [...shirtsAddedToCart],
+      maxGroupSizeAllowed - 1
+    );
+
+    if (Math.min(price1, price2) === 0) {
+      setFinalPrice(Math.max(price1, price2));
+    } else {
+      setFinalPrice(Math.min(price1, price2));
+    }
   };
 
   return (
