@@ -12,7 +12,7 @@ const Card = ({
   imageUrl,
 }: Props) => {
   return (
-    <CardContainer>
+    <CardContainer id={`#card-container-${id}`}>
       <ProductImage src={imageUrl} />
       <>
         <Adder id="remove-button" onClick={() => removeItem(id)}>

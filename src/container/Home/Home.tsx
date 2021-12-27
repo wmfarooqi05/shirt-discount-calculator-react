@@ -2,12 +2,12 @@ import produce from "immer";
 import React, { useState } from "react";
 
 import Card from "../../component/Card";
-import { BASE_PRICE, cards, DISCOUNT_PERCENTAGES } from "./Home.constant";
+import { BASE_PRICE, DISCOUNT_PERCENTAGES } from "./Home.constant";
 import { CalculateButton, Container, ListContainer } from "./Home.styles";
-import { CARD_TYPE } from "./Home.types";
+import { SHIRT_ITEM_TYPE } from "./Home.types";
 
-const Home = () => {
-  const [cartItems, setCartItems] = useState(cards);
+const Home = ({ mockShirtList }: { mockShirtList: SHIRT_ITEM_TYPE[] }) => {
+  const [cartItems, setCartItems] = useState(mockShirtList);
   const [finalPrice, setFinalPrice] = useState(0);
 
   const onAddItem = (id: number) => {
@@ -69,7 +69,7 @@ const Home = () => {
 
   const calculatePrice = () => {
     const shirtsAddedToCart: number[] = cartItems.map(
-      (x: CARD_TYPE): number => {
+      (x: SHIRT_ITEM_TYPE): number => {
         return x.noOfShirtsAddedToCard;
       }
     );
@@ -86,11 +86,12 @@ const Home = () => {
 
   return (
     <Container>
-      <ListContainer>
-        {cartItems.map((x: CARD_TYPE) => {
+      <ListContainer id="shirt-list-container">
+        {cartItems.map((x: SHIRT_ITEM_TYPE) => {
           return (
             <Card
               id={x.id}
+              key={x.id}
               imageUrl={x.imageUrl}
               noOfShirtsAddedToCard={x.noOfShirtsAddedToCard}
               addItem={onAddItem}
@@ -99,10 +100,10 @@ const Home = () => {
           );
         })}
       </ListContainer>
-      <CalculateButton onClick={calculatePrice}>
+      <CalculateButton id="calculate-price" onClick={calculatePrice}>
         Calculate Price
       </CalculateButton>
-      <p>Final Price {finalPrice}</p>
+      <p id="final-price">Final Price {finalPrice}</p>
     </Container>
   );
 };

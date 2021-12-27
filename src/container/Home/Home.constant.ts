@@ -1,6 +1,6 @@
-import { CARD_TYPE } from "./Home.types";
+import { SHIRT_ITEM_TYPE } from "./Home.types";
 
-export const cards: CARD_TYPE[] = [
+export const mockShirtList: SHIRT_ITEM_TYPE[] = [
   {
     id: 1,
     imageUrl:

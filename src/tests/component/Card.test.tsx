@@ -2,9 +2,9 @@ import { shallow } from "enzyme";
 import React from "react";
 
 import Card from "../../component/Card";
-import { CARD_TYPE } from "../../container/Home/Home.types";
+import { SHIRT_ITEM_TYPE } from "../../container/Home/Home.types";
 
-const props: CARD_TYPE = {
+const props: SHIRT_ITEM_TYPE = {
   id: 1,
   imageUrl: "https://image-test.com",
   noOfShirtsAddedToCard: 2,

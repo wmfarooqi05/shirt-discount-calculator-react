@@ -3,11 +3,12 @@ import "./App.css";
 import React from "react";
 
 import Home from "./container/Home";
+import { mockShirtList } from "./container/Home/Home.constant";
 
 function App() {
   return (
     <div>
-      <Home />
+      <Home mockShirtList={mockShirtList} />
     </div>
   );
 }

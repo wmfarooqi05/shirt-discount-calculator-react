@@ -15,4 +15,4 @@ export const ProductImage = styled.img`
 
 export const Adder = styled.button``;
 
-export const AmountText = styled.text``;
+export const AmountText = styled.p``;
