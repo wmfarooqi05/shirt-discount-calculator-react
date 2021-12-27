@@ -46,7 +46,7 @@ Go to http://localhost:3000
 ## Run With Docker
 
 ### Prerequisites
-Make sure you have already installed Docker Engine. You don’t need to install NPM. It will run tests and build a containerized application.
+Make sure you have already installed Docker Engine. You don’t need to install NPM. It will run tests and build a containerized application. It take a little time to load as it first runs the test and then the main app
 
 ### Running the project
 ```
