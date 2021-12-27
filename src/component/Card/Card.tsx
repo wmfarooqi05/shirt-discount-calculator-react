@@ -1,7 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 
-import { Adder, AmountText, CardContainer, ProductImage } from "./Card.styles";
+import {
+  Adder,
+  AmountText,
+  ButtonContainer,
+  CardContainer,
+  ProductImage,
+  ProductImageContainer,
+} from "./Card.styles";
 import { Props } from "./Card.types";
 
 const Card = ({
@@ -13,8 +20,10 @@ const Card = ({
 }: Props) => {
   return (
     <CardContainer id={`#card-container-${id}`}>
-      <ProductImage src={imageUrl} />
-      <>
+      <ProductImageContainer>
+        <ProductImage src={imageUrl} />
+      </ProductImageContainer>
+      <ButtonContainer>
         <Adder id="remove-button" onClick={() => removeItem(id)}>
           -
         </Adder>
@@ -22,7 +31,7 @@ const Card = ({
         <Adder id="add-button" onClick={() => addItem(id)}>
           +
         </Adder>
-      </>
+      </ButtonContainer>
     </CardContainer>
   );
 };

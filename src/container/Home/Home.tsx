@@ -3,7 +3,14 @@ import React, { useState } from "react";
 
 import Card from "../../component/Card";
 import { BASE_PRICE, DISCOUNT_PERCENTAGES } from "./Home.constant";
-import { CalculateButton, Container, ListContainer } from "./Home.styles";
+import {
+  BottomContainer,
+  CalculateButton,
+  Container,
+  FinalPrice,
+  Header,
+  ListContainer,
+} from "./Home.styles";
 import { SHIRT_ITEM_TYPE } from "./Home.types";
 
 const Home = ({ mockShirtList }: { mockShirtList: SHIRT_ITEM_TYPE[] }) => {
@@ -86,6 +93,7 @@ const Home = ({ mockShirtList }: { mockShirtList: SHIRT_ITEM_TYPE[] }) => {
 
   return (
     <Container>
+      <Header>Shirt Discount calculator</Header>
       <ListContainer id="shirt-list-container">
         {cartItems.map((x: SHIRT_ITEM_TYPE) => {
           return (
@@ -100,10 +108,12 @@ const Home = ({ mockShirtList }: { mockShirtList: SHIRT_ITEM_TYPE[] }) => {
           );
         })}
       </ListContainer>
-      <CalculateButton id="calculate-price" onClick={calculatePrice}>
-        Calculate Price
-      </CalculateButton>
-      <p id="final-price">Final Price {finalPrice}</p>
+      <BottomContainer>
+        <CalculateButton id="calculate-price" onClick={calculatePrice}>
+          Calculate Price
+        </CalculateButton>
+        <FinalPrice id="final-price">Final Price {finalPrice}</FinalPrice>
+      </BottomContainer>
     </Container>
   );
 };
